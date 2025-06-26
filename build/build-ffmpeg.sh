@@ -122,6 +122,8 @@ build_main () {
     make_directories $@
     download_code $@
     configure_build $@
+  else
+    export FFMPEG_DIR="ffmpeg-$6"
   fi
 
   make_clean $@
