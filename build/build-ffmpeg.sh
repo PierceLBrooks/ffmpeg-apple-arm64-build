@@ -122,12 +122,10 @@ build_main () {
     make_directories $@
     download_code $@
     configure_build $@
+  elif [[ "${BUILD_FROM_MAIN}" == "TRUE" ]]
+    export FFMPEG_DIR="ffmpeg"
   else
-    if [[ "${BUILD_FROM_MAIN}" == "TRUE" ]]
-      export FFMPEG_DIR="ffmpeg"
-    else
-      export FFMPEG_DIR="ffmpeg-$6"
-    fi
+    export FFMPEG_DIR="ffmpeg-$6"
   fi
 
   make_clean $@
