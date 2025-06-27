@@ -123,7 +123,11 @@ build_main () {
     download_code $@
     configure_build $@
   else
-    export FFMPEG_DIR="ffmpeg-$6"
+    if [[ "${BUILD_FROM_MAIN}" == "TRUE" ]]
+      export FFMPEG_DIR="ffmpeg"
+    else
+      export FFMPEG_DIR="ffmpeg-$6"
+    fi
   fi
 
   make_clean $@
