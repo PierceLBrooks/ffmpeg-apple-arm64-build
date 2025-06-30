@@ -1,4 +1,4 @@
-#!/bin/sh
+#!/bin/bash
 # $1 = script directory
 # $2 = working directory
 # $3 = tool directory
@@ -73,7 +73,7 @@ make_compile () {
   checkStatus $? "installation of ${SOFTWARE} failed"
   
   #fix up the pkgconfig.
-  sed -i '' "s/lbrotlidec$/lbrotlidec -lbrotlicommon/" $3/lib/pkgconfig/libbrotlidec.pc
+  sed -i "s/lbrotlidec$/lbrotlidec -lbrotlicommon/" $3/lib/pkgconfig/libbrotlidec.pc
 
 }
 

@@ -1,4 +1,4 @@
-#!/bin/sh
+#!/bin/bash
 # $1 = script directory
 # $2 = working directory
 # $3 = tool directory
@@ -75,7 +75,7 @@ make_compile () {
   make install
   checkStatus $? "installation of ${SOFTWARE} failed"
 
-  rm $3/lib/libz*.dylib
+  rm $3/lib/libz*.so
 }
 
 build_main () {

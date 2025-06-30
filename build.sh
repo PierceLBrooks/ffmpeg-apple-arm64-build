@@ -1,10 +1,10 @@
-#!/bin/sh
+#!/bin/bash
 
 # Option feature set to FALSE if not required and TRUE if required
 ENABLE_FFPLAY=FALSE
 ENABLE_TOPAZ=FALSE
 ENABLE_AVISYNTHPLUS=FALSE
-BUILD_FROM_MAIN=FALSE
+BUILD_FROM_MAIN=TRUE
 
 # set true for dependant features, export those needed in ffmpeg build script
  

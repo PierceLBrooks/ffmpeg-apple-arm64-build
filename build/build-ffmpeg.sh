@@ -1,4 +1,4 @@
-#!/bin/sh
+#!/bin/bash
 # $1 = script directory
 # $2 = working directory
 # $3 = tool directory
@@ -32,9 +32,10 @@ download_code () {
 
   if [[ "${BUILD_FROM_MAIN}" == "TRUE" ]]
   then
-    git clone  https://git.ffmpeg.org/ffmpeg.git
+    git clone https://github.com/PierceLBrooks/FFmpeg-v4l2.git
     cd ffmpeg
     checkStatus $? "change directory failed"
+    git checkout v4l2-request-hwaccel-4.4
     export FFMPEG_DIR="ffmpeg"
 
   else

@@ -1,4 +1,4 @@
-#!/bin/sh
+#!/bin/bash
 # $1 = script directory
 # $2 = working directory
 # $3 = tool directory
@@ -11,7 +11,7 @@
 
 if [[ "${BUILD_FROM_MAIN}" == "TRUE" ]]
 then
-BRANCH=""
+BRANCH="--branch stable"
 PATCH="patch -p1 -i  $1/x265_arm64_threading.patch"
 else
 BRANCH="--branch stable"
@@ -54,7 +54,7 @@ download_code() {
   GIT_DIR=x265_git
   cd "$2/x265/$GIT_DIR"
   checkStatus $? "change directory failed"
-  git revert b354c009a60bcd6d7fc04014e200a1ee9c45c167 --no-commit
+  #git revert b354c009a60bcd6d7fc04014e200a1ee9c45c167 --no-commit
   # TODO: checksum validation (if available)
 
   # unpack
@@ -72,14 +72,13 @@ configure_build () {
 
   #patch for arm64 / neon recognition
   #patch -p1 < $1/apple_arm64_x265.patch
-  ${PATCH}
+  #${PATCH}
 
 
   cd ../12bit
 
   # prepare build
 
-FF
   cmake -DCMAKE_INSTALL_PREFIX:PATH=$3 -DENABLE_SHARED=NO -DHIGH_BIT_DEPTH=ON -DEXPORT_C_API=OFF -DENABLE_CLI=OFF -DMAIN12=ON ../$GIT_DIR/source
   checkStatus $? "configuration of 12bit x265 failed"
 
@@ -151,7 +150,7 @@ make_compile () {
 
   #merge the libaries together
   mv libx265.a libx265_main.a
-  libtool -static -o libx265.a libx265_main.a libx265_main10.a libx265_main12.a 2>/dev/null
+  libtool --mode=link --tag=CXX --output=libx265.a libx265_main.a libx265_main10.a libx265_main12.a 2>/dev/null
   checkStatus $? "merge of x265 objects failed"
 
   # install

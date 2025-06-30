@@ -1,4 +1,4 @@
-#!/bin/sh
+#!/bin/bash
 # $1 = script directory
 # $2 = working directory
 # $3 = tool directory
@@ -70,7 +70,7 @@ make_compile () {
   checkStatus $? "installation of ${SOFTWARE} failed"
 
   # remove dynamic lib
-  rm $3/lib/libopenh264*.dylib
+  rm $3/lib/libopenh264*.so
 
 }
 

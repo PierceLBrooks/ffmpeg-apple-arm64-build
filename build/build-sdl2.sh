@@ -1,4 +1,4 @@
-#!/bin/sh
+#!/bin/bash
 # $1 = script directory
 # $2 = working directory
 # $3 = tool directory
@@ -71,7 +71,7 @@ make_compile () {
   checkStatus $? "build of $SOFTWARE failed"
 
 
-#  ln -s libSDL2-2.0.dylib libSDL2.dylib 
+#  ln -s libSDL2-2.0.so libSDL2.so 
 
   # install
   cmake --install .  
