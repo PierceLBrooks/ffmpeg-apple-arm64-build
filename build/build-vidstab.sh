@@ -27,7 +27,7 @@ download_code () {
   cd "$2/${SOFTWARE}"
   checkStatus $? "change directory failed"
   # download source
-  git clone https://github.com/georgmartius/vid.stab.git
+  git clone --depth 1 https://github.com/georgmartius/vid.stab.git vidstab
   checkStatus $? "download of ${SOFTWARE} failed"
 
 }
